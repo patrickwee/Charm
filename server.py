@@ -57,18 +57,10 @@ def get_random(text_type):
 	if items == None:
 		return '500'
 	else:
-		print(items)
+		# print(items)
 		item = random.choice(list(items))
 		print(item)
 		return jsonify(item)
-
-@app.route(APP_URI + 'random/pickup')
-def get_random_pickup():
-	items = filter(lambda item: item['text_type'] == 'pickup', texts)
-	print(items)
-	item = random.choice(list(items))
-	print(item)
-	return jsonify(item)
 
 @app.route(APP_URI + 'downvote/<int:id>')
 def downvote_text(id):
@@ -77,7 +69,9 @@ def downvote_text(id):
 	# If defined, increment downvote by one
 	if item != None:
 		item['downs'] += 1
-	return '200'
+		return '200'
+	else:
+		return '404'
 
 @app.route(APP_URI + 'upvote/<int:id>')
 def upvote_text(id):
@@ -86,7 +80,9 @@ def upvote_text(id):
 	# Increment ups
 	if item != None:
 		item['up'] += 1
-	return '200'
+		return '200'
+	else:
+		return '404'
 
 def main():
 	app.run(host='0.0.0.0')
