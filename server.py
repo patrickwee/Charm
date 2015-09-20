@@ -50,7 +50,7 @@ texts = [
   },
   {
     'id': 5,
-    'text': "“If I were a gardener, I’d put your tulips and my tulips together.",
+    'text': "\“If I were a gardener, I\’d put your tulips and my tulips together.",
     'ups': 0,
     'downs': 0,
     'text_type': 'pickup'
