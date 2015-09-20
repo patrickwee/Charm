@@ -10,7 +10,7 @@ from flask import Flask, jsonify
 
 APP_URI = "/"
 app = Flask(__name__)
-app.debug = True
+# app.debug = True
 
 texts = [
   {
@@ -201,6 +201,15 @@ def get_random(text_type):
 		item = random.choice(list(items))
 		print(item)
 		return jsonify(item)
+
+@app.route(APP_URI + 'text/<int:text_id>')
+def get_individual(text_id):
+	items = filter(lambda item: item['id'] == text_id, texts)
+	if item == None:
+		return '500'
+	else:
+		return jsonify(list(items)[0])
+
 
 @app.route(APP_URI + 'downvote/<int:id>')
 def downvote_text(id):
